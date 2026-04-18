@@ -1,0 +1,67 @@
+/* page spacing refinement */
+.category-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* HERO emphasis */
+.hero-card {
+  text-align: center;
+  padding: 2.5rem 2rem;
+}
+
+.hero-actions {
+  margin-top: 1.2rem;
+}
+
+/* subtitle consistency */
+.subtitle {
+  font-size: 0.9rem;
+  opacity: 0.75;
+}
+
+/* BENEFITS LIST (better UX than plain ul) */
+.benefits-list {
+  padding-left: 1.2rem;
+  margin-top: 0.8rem;
+}
+
+.benefits-list li {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+/* EXERCISE GRID */
+.exercises-grid {
+  margin-top: 1rem;
+}
+
+/* EXERCISE CARDS (interactive layer) */
+.exercise-card {
+  padding: 1.4rem;
+  border-radius: 14px;
+
+  background: rgba(77, 89, 71, 0.04);
+  border: 1px solid rgba(77, 89, 71, 0.12);
+
+  transition: all 0.25s ease;
+}
+
+.exercise-card:hover {
+  transform: translateY(-4px);
+  background: rgba(77, 89, 71, 0.08);
+  border-color: var(--secondary);
+}
+
+/* text hierarchy */
+.exercise-card h4 {
+  margin-bottom: 0.4rem;
+}
+
+.exercise-card p {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  margin-bottom: 0.8rem;
+}

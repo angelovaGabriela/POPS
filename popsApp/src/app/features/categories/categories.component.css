@@ -1,0 +1,40 @@
+.categories-home .hero-card {
+  text-align: center;
+}
+
+.hero-actions {
+  margin-top: 1.2rem;
+}
+
+.goal-card {
+  text-align: left;
+  padding: 1.5rem;
+  border-radius: 14px;
+
+  background: rgba(157, 166, 88, 0.08); /* soft tinted background */
+  border: 1px solid rgba(157, 166, 88, 0.2);
+
+  transition: all 0.25s ease;
+}
+.goal-card:hover {
+  transform: translateY(-5px);
+  background: rgba(157, 166, 88, 0.15);
+  border-color: var(--secondary);
+}
+
+.quick-actions {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.goal-card h4 {
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+}
+
+.goal-card p {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
