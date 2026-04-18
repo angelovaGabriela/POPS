@@ -1,15 +1,37 @@
 import { Routes } from '@angular/router';
+import { HomeComponent } from './features/home/home.component';
+import { LoginComponent } from './features/auth/login/login.component';
+import { RegisterComponent } from './features/auth/register/register.component';
+import { CategoriesComponent } from './features/categories/categories.component';
+import { CategoryDetailsComponent } from './features/categories/category-details/category-details.component';
+import { CategoryListComponent } from './features/categories/category-list/category-list.component';
+import { SessionsComponent } from './features/sessions/sessions.component';
+import { SessionDetailsComponent } from './features/sessions/session-details/session-details.component';
+import { SessionCreateComponent } from './features/sessions/session-create/session-create.component';
+import { DashboardComponent } from './features/dashboard/dashboard.component';
+import { NotFoundComponent } from './features/not-found/not-found.component';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+  { path: "", redirectTo: 'home', pathMatch: 'full' },
+   
+  { path: "home", component: HomeComponent },
+
+  { path: "login", component: LoginComponent },
+  { path: "register", component: RegisterComponent },
+  { path: "dashboard", component: DashboardComponent },
+
+  { path: "categories-home", component: CategoriesComponent }, 
+  { path: "categories", component: CategoryListComponent }, 
+  { path: "categories/:id", component: CategoryDetailsComponent },
+
+  { path: "sessions-home", component: SessionsComponent }, 
+  { path: "add-session", component: SessionCreateComponent }, 
+  { path: "session/:id", component: SessionDetailsComponent }, 
+  { path: "edit-session", component: SessionCreateComponent }, 
+
+  { path: "**", component: NotFoundComponent }
+
+];
 
 
-//home → home.component
-// /categories → category-list.component
-// /categories/:id → category-details.component
-// /sessions → session-catalog.component
-// /sessions/:id → session-details.component
-// /create → session-create.component
-// /edit/:id → session-edit.component
-// /dashboard → dashboard.component
-// /login → login.component
-// /register → register.component
+

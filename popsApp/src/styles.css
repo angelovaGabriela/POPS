@@ -1,1 +1,250 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --primary: #4D5947;
+  --secondary: #9DA658;
+  --accent: #A68053;
+  --light: #D9C3A9;
+  --dark: #734720;
+  --white: #ffffff;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--light);
+  color: var(--primary);
+}
+
+.container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.btn {
+  background: var(--secondary);
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+}
+
+.hero-card h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.hero-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  background: rgba(245, 241, 234, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border-bottom: 1px solid rgba(77, 89, 71, 0.08);
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 0;
+  gap: 1rem;
+}
+
+.brand {
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--primary);
+  text-decoration: none;
+  letter-spacing: 0.3px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.nav a {
+  position: relative;
+  text-decoration: none;
+  color: var(--primary);
+  font-size: 0.9rem;
+  opacity: 0.9;
+  transition: all 0.2s ease;
+}
+
+.nav a:hover {
+  opacity: 1;
+  color: var(--dark);
+}
+
+.nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: var(--secondary);
+  transition: width 0.25s ease;
+  border-radius: 2px;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+.nav a.active {
+  color: var(--secondary);
+  font-weight: 500;
+}
+
+.nav a.active::after {
+  width: 100%;
+}
+
+.header-cta .btn {
+  padding: 0.55rem 1.1rem;
+  font-size: 0.85rem;
+  border-radius: 999px;
+}
+
+.footer {
+  background: var(--primary);
+  color: var(--light);
+  padding: 3rem 1.5rem;
+  margin-top: 4rem;
+}
+
+/* layout */
+.footer-container {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2.5rem;
+  align-items: start;
+}
+
+/* brand section */
+.footer-brand h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  color: var(--white);
+}
+
+.footer-brand p {
+  font-size: 0.9rem;
+  opacity: 0.85;
+  line-height: 1.5;
+}
+
+/* links */
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.footer-links a {
+  color: var(--light);
+  text-decoration: none;
+  font-size: 0.9rem;
+  opacity: 0.9;
+  transition: all 0.2s ease;
+  width: fit-content;
+}
+
+.footer-links a:hover {
+  color: var(--secondary);
+  transform: translateX(4px);
+}
+
+/* meta */
+.footer-meta {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+/* subtle separation feeling */
+.footer-container > div {
+  position: relative;
+}
+
+.footer-container > div::before {
+  content: "";
+  position: absolute;
+  left: -12px;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.footer-container > div:first-child::before {
+  display: none;
+}
+
+
+/* inputs */
+input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(77, 89, 71, 0.15);
+  outline: none;
+  font-size: 0.9rem;
+  background: white;
+  transition: all 0.2s ease;
+}
+
+input:focus {
+  border-color: var(--secondary);
+  box-shadow: 0 0 0 3px rgba(157, 166, 88, 0.2);
+}
+
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  opacity: 0.75;
+  margin-bottom: 1.2rem;
+}
+
+.full-btn {
+  width: 100%;
+  margin-top: 1rem;
+}
