@@ -1,0 +1,82 @@
+.not-found {
+  text-align: center;
+}
+
+.not-found-card {
+  padding: 2rem;
+  animation: floatIn 0.8s ease-out, breathe 6s ease-in-out infinite;
+}
+
+.not-found-code {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+
+  animation: fadeUp 1s ease-out;
+}
+
+.not-found-message {
+  animation: fadeUp 1.2s ease-out;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.not-found-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes breathe {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.not-found-illustration svg {
+  animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+svg circle {
+  animation: blink 4s infinite;
+  transform-origin: center;
+}
+
+@keyframes blink {
+  0%, 96%, 100% { transform: scaleY(1); }
+  97% { transform: scaleY(0.1); }
+}
