@@ -1,0 +1,87 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* HERO */
+.hero-card {
+  text-align: center;
+  padding: 2.5rem 2rem;
+}
+
+.hero-actions {
+  margin-top: 1.2rem;
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* PREFERRED CATEGORIES */
+.categories-grid {
+  margin-top: 1rem;
+}
+
+.pref-card {
+  padding: 1.2rem;
+
+  background: rgba(157, 166, 88, 0.05);
+  border: 1px solid rgba(157, 166, 88, 0.12);
+  border-radius: 14px;
+
+  transition: all 0.25s ease;
+}
+
+.pref-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--secondary);
+}
+
+/* SESSIONS */
+.sessions-grid {
+  margin-top: 1rem;
+}
+
+.session-card {
+  padding: 1.4rem;
+  border-radius: 14px;
+
+  background: rgba(77, 89, 71, 0.04);
+  border: 1px solid rgba(77, 89, 71, 0.1);
+
+  transition: all 0.25s ease;
+}
+
+.session-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary);
+}
+
+/* session meta */
+.session-meta {
+  display: flex;
+  gap: 0.6rem;
+  margin: 0.6rem 0;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+/* actions */
+.session-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.danger-btn {
+  background: rgba(165, 128, 82, 0.1);
+  border: 1px solid rgba(165, 128, 82, 0.3);
+  color: var(--accent);
+}
+
+.danger-btn:hover {
+  background: rgba(165, 128, 82, 0.25);
+  border-color: var(--accent);
+  color: white;
+}
