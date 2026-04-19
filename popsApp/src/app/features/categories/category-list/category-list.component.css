@@ -22,29 +22,3 @@
 .subcategories {
   margin-top: 1rem;
 }
-
-.sub-card {
-  padding: 1.4rem;
-  border-radius: 14px;
-
-  background: rgba(166, 128, 83, 0.08); /* warm accent tint for list cards */
-  border: 1px solid rgba(166, 128, 83, 0.15);
-
-  transition: all 0.25s ease;
-}
-
-.sub-card:hover {
-  transform: translateY(-4px);
-  background: rgba(166, 128, 83, 0.14);
-  border-color: rgba(166, 128, 83, 0.45);
-}
-
-.sub-card h4 {
-  margin-bottom: 0.4rem;
-}
-
-.sub-card p {
-  font-size: 0.85rem;
-  opacity: 0.8;
-  margin-bottom: 0.8rem;
-}

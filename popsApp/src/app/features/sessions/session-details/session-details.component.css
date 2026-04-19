@@ -57,21 +57,6 @@
   margin-top: 1rem;
 }
 
-.exercise-card {
-  padding: 1.3rem;
-
-  background: rgba(77, 89, 71, 0.04);
-  border: 1px solid rgba(77, 89, 71, 0.1);
-  border-radius: 14px;
-
-  transition: all 0.25s ease;
-}
-
-.exercise-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--secondary);
-}
-
 /* MUSIC */
 .music-link {
   margin-top: 0.5rem;

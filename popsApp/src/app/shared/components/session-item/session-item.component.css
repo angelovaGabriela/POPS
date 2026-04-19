@@ -1,0 +1,25 @@
+.session-card {
+  padding: 1.4rem;
+  border-radius: 14px;
+
+  background: rgba(157, 166, 88, 0.05);
+  border: 1px solid rgba(157, 166, 88, 0.12);
+
+  transition: all 0.25s ease;
+}
+
+.session-card:hover {
+  transform: translateY(-4px);
+  background: rgba(157, 166, 88, 0.1);
+  border-color: var(--secondary);
+}
+
+.session-card h4 {
+  margin-bottom: 0.4rem;
+}
+
+.session-card p {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  margin-bottom: 0.8rem;
+}

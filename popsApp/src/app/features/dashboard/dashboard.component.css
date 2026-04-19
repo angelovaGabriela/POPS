@@ -23,21 +23,6 @@
   margin-top: 1rem;
 }
 
-.pref-card {
-  padding: 1.2rem;
-
-  background: rgba(157, 166, 88, 0.05);
-  border: 1px solid rgba(157, 166, 88, 0.12);
-  border-radius: 14px;
-
-  transition: all 0.25s ease;
-}
-
-.pref-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--secondary);
-}
-
 /* SESSIONS */
 .sessions-grid {
   margin-top: 1rem;

@@ -2,12 +2,12 @@
 
   <!-- HERO -->
   <div class="card hero-card">
-    <h2>Welcome back</h2>
+    <h2>Hello, Gabriela!</h2>
     <p class="subtitle">Continue building your yoga & pilates journey</p>
 
     <div class="hero-actions">
-      <button class="btn" routerLink="/create">Create Session</button>
-      <button class="btn" routerLink="/catalog">Explore Sessions</button>
+      <button class="btn" routerLink="/create-session">Create Session</button>
+      <button class="btn" routerLink="/sessions-home">Explore Sessions</button>
     </div>
   </div>
 
@@ -16,20 +16,9 @@
     <h3>Your Preferred Categories</h3>
 
     <div class="grid categories-grid">
-      <div class="card pref-card">
-        <h4>🧘 Vinyasa</h4>
-        <p>Flow-based yoga practice</p>
-      </div>
-
-      <div class="card pref-card">
-        <h4>💪 Core Pilates</h4>
-        <p>Strength & stability</p>
-      </div>
-
-      <div class="card pref-card">
-        <h4>🌿 Yin Yoga</h4>
-        <p>Deep stretch & relaxation</p>
-      </div>
+      <app-category-item></app-category-item>
+      <app-category-item></app-category-item>
+      <app-category-item></app-category-item>
     </div>
   </div>
 
@@ -49,7 +38,7 @@
         </div>
 
         <div class="session-actions">
-          <button class="btn" routerLink="/details/1">View</button>
+          <button class="btn" [routerLink]="['/session-details']">View</button>
           <button class="btn">Edit</button>
           <button class="btn danger-btn">Remove</button>
         </div>
@@ -65,7 +54,7 @@
         </div>
 
         <div class="session-actions">
-          <button class="btn" routerLink="/details/1">View</button>
+          <button class="btn" [routerLink]="['/session-details']">View</button>
           <button class="btn">Edit</button>
           <button class="btn danger-btn">Remove</button>
         </div>

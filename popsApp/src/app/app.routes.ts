@@ -10,6 +10,7 @@ import { SessionDetailsComponent } from './features/sessions/session-details/ses
 import { SessionCreateComponent } from './features/sessions/session-create/session-create.component';
 import { DashboardComponent } from './features/dashboard/dashboard.component';
 import { NotFoundComponent } from './features/not-found/not-found.component';
+import { CategoryItemComponent } from './shared/components/category-item/category-item.component';
 
 export const routes: Routes = [
   { path: "", redirectTo: 'home', pathMatch: 'full' },
@@ -22,16 +23,21 @@ export const routes: Routes = [
 
   { path: "categories-home", component: CategoriesComponent }, 
   { path: "categories", component: CategoryListComponent }, 
-  { path: "categories/:id", component: CategoryDetailsComponent },
+  { path: "category-details", component: CategoryDetailsComponent },
+//to change details to :id after...done with dev purposses
 
   { path: "sessions-home", component: SessionsComponent }, 
-  { path: "add-session", component: SessionCreateComponent }, 
-  { path: "session/:id", component: SessionDetailsComponent }, 
+  { path: "create-session", component: SessionCreateComponent }, 
+  { path: "session-details", component: SessionDetailsComponent },
+  //to change details to :id after...done with dev purposses 
   { path: "edit-session", component: SessionCreateComponent }, 
 
-  { path: "**", component: NotFoundComponent }
+  { path: "**", component: NotFoundComponent },
 
-];
+]
+
+
+
 
 
 

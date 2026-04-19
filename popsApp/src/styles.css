@@ -36,9 +36,19 @@ body {
   border-radius: 8px;
 }
 
+.btn:hover {
+  background: var(--primary);
+  cursor: pointer;
+}
+
 .hero-card h1 {
   font-size: 2rem;
   margin-bottom: 1rem;
+}
+.hero-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: all 0.25s ease;
 }
 
 .hero-actions {
@@ -60,8 +70,8 @@ body {
   z-index: 100;
 
   background: rgba(245, 241, 234, 0.75);
-  backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
 
   border-bottom: 1px solid rgba(77, 89, 71, 0.08);
 }

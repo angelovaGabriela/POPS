@@ -2,14 +2,14 @@
 
   <!-- HERO -->
   <div class="card hero-card">
-    <h2>Your Sessions</h2>
+    <h2>Session trends</h2>
     <p class="subtitle">
       Create, explore, and organize your yoga & pilates sessions.
     </p>
 
     <div class="hero-actions">
-      <button class="btn" routerLink="/create">Create Session</button>
-      <button class="btn" routerLink="/dashboard">My Sessions</button>
+      <button class="btn" [routerLink]="['/create-session']">Create Session</button>
+      <button class="btn" [routerLink]="['/dashboard']">My Sessions</button>
     </div>
   </div>
 
@@ -18,17 +18,8 @@
     <h3>Recommended for you</h3>
 
     <div class="grid sessions-grid">
-      <div class="card session-card">
-        <h4>Morning Flow</h4>
-        <p>Start your day energized and focused.</p>
-        <button class="btn" routerLink="/details/1">Details</button>
-      </div>
-
-      <div class="card session-card">
-        <h4>Evening Relax</h4>
-        <p>Release tension and improve sleep.</p>
-        <button class="btn">Details</button>
-      </div>
+      <app-session-item></app-session-item>
+      <app-session-item></app-session-item>
     </div>
   </div>
 
