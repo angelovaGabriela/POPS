@@ -1,1 +1,60 @@
-<p>sessions works!</p>
+<section class="container sessions-home">
+
+  <!-- HERO -->
+  <div class="card hero-card">
+    <h2>Your Sessions</h2>
+    <p class="subtitle">
+      Create, explore, and organize your yoga & pilates sessions.
+    </p>
+
+    <div class="hero-actions">
+      <button class="btn" routerLink="/create">Create Session</button>
+      <button class="btn" routerLink="/dashboard">My Sessions</button>
+    </div>
+  </div>
+
+  <!-- RECOMMENDED -->
+  <div class="card">
+    <h3>Recommended for you</h3>
+
+    <div class="grid sessions-grid">
+      <div class="card session-card">
+        <h4>Morning Flow</h4>
+        <p>Start your day energized and focused.</p>
+        <button class="btn" routerLink="/details/1">Details</button>
+      </div>
+
+      <div class="card session-card">
+        <h4>Evening Relax</h4>
+        <p>Release tension and improve sleep.</p>
+        <button class="btn">Details</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- BROWSE BY GOAL -->
+  <div class="card">
+    <h3>Browse by goal</h3>
+
+    <div class="grid goal-grid">
+      <div class="card goal-card">
+        <h4>🧘 Flexibility</h4>
+        <p>Improve mobility and stretching.</p>
+        <button class="btn" routerLink="/dashboard">View</button>
+      </div>
+
+      <div class="card goal-card">
+        <h4>💪 Strength</h4>
+        <p>Build core and muscle control.</p>
+        <button class="btn" routerLink="/dashboard">View</button>
+      </div>
+
+      <div class="card goal-card">
+        <h4>🌿 Recovery</h4>
+        <p>Relax and restore your body.</p>
+        <button class="btn" routerLink="/dashboard">View</button>
+      </div>
+    </div>
+  </div>
+
+</section>

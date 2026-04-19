@@ -1,0 +1,97 @@
+/* layout */
+.create-session {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+/* STEP CARDS */
+.step-card {
+  padding: 2rem;
+  border-radius: 16px;
+
+  background: rgb(250, 246, 247);
+  border: 1px solid rgba(77, 89, 71, 0.08);
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+  transition: all 0.25s ease;
+}
+
+.step-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(157, 166, 88, 0.3);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+}
+
+/* OPTION BUTTONS */
+.option-group {
+  display: flex;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.option {
+  padding: 0.5rem 1.1rem;
+  border-radius: 999px;
+
+  border: 1px solid rgba(77, 89, 71, 0.15);
+  background: rgba(77, 89, 71, 0.04);
+
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--primary);
+
+  transition: all 0.2s ease;
+}
+
+.option:hover {
+  background: var(--secondary);
+  color: white;
+  border-color: var(--secondary);
+}
+
+/* INPUTS + TEXTAREA (FIXED WIDTH ISSUE) */
+.create-form input,
+.create-form textarea {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+
+  padding: 0.7rem 0.9rem;
+  border-radius: 10px;
+  border: 1px solid rgba(77, 89, 71, 0.12);
+
+  font-size: 0.9rem;
+  background: white;
+
+  margin-top: 0.6rem;
+
+  transition: all 0.2s ease;
+}
+
+.create-form input:focus,
+.create-form textarea:focus {
+  border-color: var(--secondary);
+  box-shadow: 0 0 0 3px rgba(157, 166, 88, 0.15);
+  outline: none;
+}
+
+/* TEXTAREA */
+.create-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* EXERCISE LIST */
+.exercise-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 0.8rem;
+}
+
+/* BUTTON ALIGNMENT */
+.full-btn {
+  width: 100%;
+}

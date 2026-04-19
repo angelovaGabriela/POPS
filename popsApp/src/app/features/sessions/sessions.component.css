@@ -1,0 +1,71 @@
+.sessions-home {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* HERO */
+.hero-card {
+  text-align: center;
+  padding: 2.5rem 2rem;
+}
+
+.hero-actions {
+  margin-top: 1.2rem;
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* SESSION CARDS */
+.sessions-grid {
+  margin-top: 1rem;
+}
+
+.session-card {
+  padding: 1.4rem;
+  border-radius: 14px;
+
+  background: rgba(157, 166, 88, 0.05);
+  border: 1px solid rgba(157, 166, 88, 0.12);
+
+  transition: all 0.25s ease;
+}
+
+.session-card:hover {
+  transform: translateY(-4px);
+  background: rgba(157, 166, 88, 0.1);
+  border-color: var(--secondary);
+}
+
+.session-card h4 {
+  margin-bottom: 0.4rem;
+}
+
+.session-card p {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  margin-bottom: 0.8rem;
+}
+
+/* GOAL SECTION */
+.goal-grid {
+  margin-top: 1rem;
+}
+
+.goal-card {
+  padding: 1.3rem;
+
+  background: rgba(77, 89, 71, 0.04);
+  border: 1px solid rgba(77, 89, 71, 0.12);
+  border-radius: 14px;
+
+  transition: all 0.25s ease;
+}
+
+.goal-card:hover {
+  transform: translateY(-4px);
+  background: rgba(77, 89, 71, 0.08);
+  border-color: var(--primary);
+}
