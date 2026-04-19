@@ -55,19 +55,20 @@ This API is not public. Authentication is required to store and retrieve data. Y
 
 ```json
 {
-  "name": "John Doe",
+  "firstName": "John",
+  "lastName": "Doe",
   "email": "john@email.com",
-  "username": "Johny",
-  "password": "12345",
-  "rePassword": "12345"
+  "age": 25,
+  "password": "SecurePass123!"
 }
 ```
 
 ### Required
 
 - email (unique)
-- username (min 5 chars, latin letters and numbers)
-- password (min 5 chars, latin letters and numbers)
+- firstName (required)
+- age (min: 15, max: 110)
+- password (min 8 chars, must include uppercase, lowercase, number, special character)
 
 ### Success Response
 
@@ -76,9 +77,10 @@ This API is not public. Authentication is required to store and retrieve data. Y
   "categories": [],
   "sessions": [],
   "_id": "5f1875690916010017964978",
-  "name": "John Doe",
+  "firstName": "John",
+  "lastName": "Doe",
   "email": "john@email.com",
-  "username": "Johny",
+  "age": 25,
   "created_at": "2020-10-14T08:04:12.196Z",
   "updatedAt": "2020-10-14T08:58:53.589Z"
 }
@@ -88,7 +90,7 @@ This API is not public. Authentication is required to store and retrieve data. Y
 
 ```json
 {
-  "message": "This email/username is already registered!"
+  "message": "This email is already registered!"
 }
 ```
 
@@ -106,8 +108,8 @@ This API is not public. Authentication is required to store and retrieve data. Y
 
 ```json
 {
-  "username": "Johny",
-  "password": "12345"
+  "email": "john@email.com",
+  "password": "SecurePass123!"
 }
 ```
 
@@ -118,9 +120,10 @@ This API is not public. Authentication is required to store and retrieve data. Y
   "categories": ["5f85c51996b5601b2406e5b7"],
   "sessions": ["5f86bdcde012743fe4f5b324"],
   "_id": "5f1875690916010017964978",
-  "name": "John Doe",
+  "firstName": "John",
+  "lastName": "Doe",
   "email": "john@email.com",
-  "username": "Johny",
+  "age": 25,
   "created_at": "2020-10-14T08:04:12.196Z",
   "updatedAt": "2020-10-14T08:58:53.589Z"
 }

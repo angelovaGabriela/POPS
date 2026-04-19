@@ -5,7 +5,11 @@ const saltRounds = Number(process.env.SALTROUNDS) || 5;
 const { ObjectId } = mongoose.Schema.Types;
 
 const userSchema = new mongoose.Schema({
-    tel: {
+    firstName: {
+        type: String,
+        required: true,
+    },
+    lastName: {
         type: String,
     },
     email: {
@@ -13,17 +17,10 @@ const userSchema = new mongoose.Schema({
         required: true,
         unique: true,
     },
-    username: {
-        type: String,
-        required: true,
-        unique: true,
-        minlength: [5, 'Username should be at least 5 characters'],
-        validate: {
-            validator: function (v) {
-                return /[a-zA-Z0-9]+/g.test(v);
-            },
-            message: props => `${props.value} must contains only latin letters and digits!`
-        },
+    age: {
+        type: Number,
+        min: [15, 'Age must be at least 15'],
+        max: [110, 'Age must not exceed 110'],
     },
     password: {
         type: String,
