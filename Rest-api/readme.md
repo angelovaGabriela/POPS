@@ -65,7 +65,7 @@ This API is not public. Authentication is required to store and retrieve data. Y
 
 ### Required
 
-- email (unique)
+- email
 - firstName (required)
 - age (min: 15, max: 110)
 - password (min 8 chars, must include uppercase, lowercase, number, special character)
