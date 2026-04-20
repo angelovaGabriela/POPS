@@ -1,15 +1,8 @@
-
- // templateUrl: './session-create.component.html',
- // styleUrl: './session-create.component.css',
-
-
 import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { Session,SessionData, SessionType, SessionGoal, Subcategory, Exercise } from '../../../shared/interfaces/session';
-
 import { SessionService } from '../../../core/services/session.service';
 
 interface ExerciseSlot {
@@ -18,7 +11,6 @@ interface ExerciseSlot {
 
 @Component({
   selector: 'app-session-create',
-  standalone: true,
   imports: [CommonModule, FormsModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './session-create.component.html',
