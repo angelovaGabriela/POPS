@@ -7,10 +7,13 @@
     </div>
 
     <div class="footer-links">
+      @if(!isLoggedIn()) {
       <a routerLink="/home">Home</a>
+      } @else {
+      <a routerLink="/dashboard">Dashboard</a>
+      }
       <a routerLink="/sessions-home">Sessions</a>
       <a routerLink="/categories-home">Categories</a>
-      <a routerLink="/dashboard">Dashboard</a>
     </div>
 
     <div class="footer-meta">

@@ -83,13 +83,13 @@
       <p class="error">{{ errorMessage }}</p>
       }
 
-      <button class="btn full-btn" type="submit" [disabled]="isLoading">
-        @if (isLoading) {
-        Registering...
-        } @else {
-        Register
-        }
-      </button>
+    <button class="btn full-btn" type="submit" [disabled]="isLoading || registerForm.invalid" [class.no-hover]="registerForm.invalid || isLoading">
+  @if (isLoading) {
+    Registering...
+  } @else {
+    Register
+  }
+</button>
 
     </form>
   </div>

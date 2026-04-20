@@ -6,12 +6,19 @@
     </a>
 
     <nav class="nav">
-      <a routerLink="/home" routerLinkActive="active">Home</a>
       <a routerLink="/sessions-home" routerLinkActive="active">Sessions</a>
       <a routerLink="/categories-home" routerLinkActive="active">Categories</a>
-      <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+
+      @if(!isLoggedIn()) {
       <a routerLink="/login" routerLinkActive="active">Login</a>
       <a routerLink="/register" routerLinkActive="active">Register</a>
+      } @else {
+      <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+      <a class="logout-link" (click)="onLogout()">Logout</a>
+      }
+
+
+
     </nav>
 
   </div>
