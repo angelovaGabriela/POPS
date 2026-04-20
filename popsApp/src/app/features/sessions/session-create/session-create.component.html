@@ -1,78 +1,332 @@
-<section class="container create-session">
+<section class="cs-root">
 
-  <div class="card">
-    <h2>Create Your Session</h2>
-    <p class="subtitle">Build a personalized yoga or pilates session step by step</p>
+  <!-- Ambient background orbs -->
+  <div class="cs-orb cs-orb--1"></div>
+  <div class="cs-orb cs-orb--2"></div>
+  <div class="cs-orb cs-orb--3"></div>
+
+  <div class="cs-inner">
+
+    <header class="cs-header">
+      <span class="cs-label">New Session</span>
+      <h1 class="cs-title">Craft Your<br><em>Practice</em></h1>
+      <p class="cs-sub">Build a personalised yoga or pilates session, step by step.</p>
+    </header>
+
+    <div class="cs-progress" aria-label="Progress">
+      <div class="cs-progress__track">
+        <div class="cs-progress__fill" [style.width.%]="progressPercent"></div>
+      </div>
+      <span class="cs-progress__text">Step {{ currentStep }} of {{ totalSteps }}</span>
+    </div>
+
+
+    <div class="cs-card" [class.cs-card--active]="currentStep === 1" *ngIf="currentStep === 1">
+      <div class="cs-card__num">01</div>
+      <h2 class="cs-card__title">Session Type</h2>
+      <p class="cs-card__hint">What are you practicing today?</p>
+
+      <div class="cs-toggle" role="group" aria-label="Session type">
+        <button
+          type="button"
+          class="cs-toggle__btn"
+          [class.cs-toggle__btn--active]="form.type === 'yoga'"
+          (click)="selectType('yoga')"
+          aria-pressed="{{ form.type === 'yoga' }}">
+          <span class="cs-toggle__icon">🧘</span>
+          <span class="cs-toggle__label">Yoga</span>
+        </button>
+        <button
+          type="button"
+          class="cs-toggle__btn"
+          [class.cs-toggle__btn--active]="form.type === 'pilates'"
+          (click)="selectType('pilates')"
+          aria-pressed="{{ form.type === 'pilates' }}">
+          <span class="cs-toggle__icon">💪</span>
+          <span class="cs-toggle__label">Pilates</span>
+        </button>
+      </div>
+
+      <div class="cs-nav">
+        <button class="cs-btn cs-btn--next" [disabled]="!form.type" (click)="next()">
+          Continue <span>→</span>
+        </button>
+      </div>
+    </div>
+
+
+    <div class="cs-card" [class.cs-card--active]="currentStep === 2" *ngIf="currentStep === 2">
+      <div class="cs-card__num">02</div>
+      <h2 class="cs-card__title">Session Goal</h2>
+      <p class="cs-card__hint">What do you want to achieve?</p>
+
+      <div class="cs-pill-group" role="group" aria-label="Goal">
+        <button
+          *ngFor="let g of goals"
+          type="button"
+          class="cs-pill"
+          [class.cs-pill--active]="form.goal === g.value"
+          (click)="selectGoal(g.value)">
+          <span class="cs-pill__icon">{{ g.icon }}</span>
+          <span class="cs-pill__label">{{ g.label }}</span>
+          <span class="cs-pill__desc">{{ g.desc }}</span>
+        </button>
+      </div>
+
+      <div class="cs-nav">
+        <button class="cs-btn cs-btn--back" (click)="prev()">← Back</button>
+        <button class="cs-btn cs-btn--next" [disabled]="!form.goal" (click)="next()">
+          Continue <span>→</span>
+        </button>
+      </div>
+    </div>
+
+  
+    <div class="cs-card" [class.cs-card--active]="currentStep === 3" *ngIf="currentStep === 3">
+      <div class="cs-card__num">03</div>
+      <h2 class="cs-card__title">Style</h2>
+      <p class="cs-card__hint">
+        {{ form.type === 'yoga' ? 'Yoga' : 'Pilates' }} styles for
+        <strong>{{ form.goal }}</strong>
+      </p>
+
+      <div class="cs-pill-group cs-pill-group--sub" role="group" aria-label="Subcategory">
+        <button
+          *ngFor="let s of currentSubcategories"
+          type="button"
+          class="cs-pill cs-pill--sub"
+          [class.cs-pill--active]="form.subcategory === s.value"
+          (click)="selectSubcategory(s.value)">
+          {{ s.label }}
+        </button>
+      </div>
+
+      <div class="cs-nav">
+        <button class="cs-btn cs-btn--back" (click)="prev()">← Back</button>
+        <button class="cs-btn cs-btn--next" [disabled]="!form.subcategory" (click)="next()">
+          Continue <span>→</span>
+        </button>
+      </div>
+    </div>
+
+
+    <div class="cs-card" [class.cs-card--active]="currentStep === 4" *ngIf="currentStep === 4">
+      <div class="cs-card__num">04</div>
+      <h2 class="cs-card__title">Details</h2>
+      <p class="cs-card__hint">Name your session and set the duration.</p>
+
+      <div class="cs-fields">
+        <label class="cs-field">
+          <span class="cs-field__label">Session Name <em>*</em></span>
+          <input
+            class="cs-field__input"
+            type="text"
+            placeholder="e.g. Morning Power Flow"
+            [(ngModel)]="form.name"
+            maxlength="80"
+            autocomplete="off" />
+        </label>
+
+        <label class="cs-field">
+          <span class="cs-field__label">Short Description</span>
+          <input
+            class="cs-field__input"
+            type="text"
+            placeholder="One-liner about this session"
+            [(ngModel)]="form.description"
+            maxlength="160"
+            autocomplete="off" />
+        </label>
+
+        <label class="cs-field">
+          <span class="cs-field__label">Detailed Description</span>
+          <textarea
+            class="cs-field__input cs-field__textarea"
+            placeholder="What should practitioners expect? Any cues or intentions..."
+            [(ngModel)]="form.detailedDescription"
+            rows="3"></textarea>
+        </label>
+
+        <label class="cs-field">
+          <span class="cs-field__label">
+            Duration <em>*</em>
+            <span class="cs-field__meta">minutes → {{ exerciseSlots.length }} exercises</span>
+          </span>
+          <div class="cs-duration-row">
+            <input
+              class="cs-field__input cs-field__duration"
+              type="number"
+              placeholder="30"
+              min="1"
+              max="120"
+              [(ngModel)]="form.durationMinutes"
+              (ngModelChange)="onDurationChange($event)" />
+            <span class="cs-duration-unit">min</span>
+          </div>
+        </label>
+      </div>
+
+      <div class="cs-nav">
+        <button class="cs-btn cs-btn--back" (click)="prev()">← Back</button>
+        <button
+          class="cs-btn cs-btn--next"
+          [disabled]="!form.name || !form.durationMinutes"
+          (click)="next()">
+          Continue <span>→</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="cs-card" [class.cs-card--active]="currentStep === 5" *ngIf="currentStep === 5">
+      <div class="cs-card__num">05</div>
+      <h2 class="cs-card__title">Exercises</h2>
+      <p class="cs-card__hint">
+        {{ exerciseSlots.length }} slots · each ~1 min ·
+        <em>{{ form.subcategory | titlecase }}</em>
+      </p>
+
+      <div class="cs-exercises">
+        <div
+          *ngFor="let slot of exerciseSlots; let i = index"
+          class="cs-exercise-row"
+          [class.cs-exercise-row--filled]="slot.name">
+
+          <span class="cs-exercise-row__num">{{ i + 1 }}</span>
+          <div class="cs-select-wrap">
+            <select
+              class="cs-select"
+              [(ngModel)]="slot.name"
+              [attr.aria-label]="'Exercise ' + (i + 1)">
+              <option value="" disabled selected>Choose exercise…</option>
+              <option
+                *ngFor="let ex of exerciseOptions"
+                [value]="ex"
+                [disabled]="isExerciseUsed(ex, i)">
+                {{ ex }}
+              </option>
+            </select>
+            <span class="cs-select__arrow">▾</span>
+          </div>
+
+          <button
+            class="cs-exercise-row__clear"
+            *ngIf="slot.name"
+            type="button"
+            (click)="slot.name = ''"
+            aria-label="Clear">✕</button>
+        </div>
+      </div>
+
+      <div class="cs-nav">
+        <button class="cs-btn cs-btn--back" (click)="prev()">← Back</button>
+        <button class="cs-btn cs-btn--next" [disabled]="filledExercises === 0" (click)="next()">
+          Continue <span>→</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="cs-card" [class.cs-card--active]="currentStep === 6" *ngIf="currentStep === 6">
+      <div class="cs-card__num">06</div>
+      <h2 class="cs-card__title">Music</h2>
+      <p class="cs-card__hint">Add a Spotify or YouTube link (optional).</p>
+
+      <div class="cs-fields">
+        <label class="cs-field">
+          <span class="cs-field__label">
+            Music URL
+            <span class="cs-field__meta">Spotify · YouTube</span>
+          </span>
+          <div class="cs-music-row">
+            <span class="cs-music-icon">{{ musicIcon }}</span>
+            <input
+              class="cs-field__input cs-music-input"
+              type="url"
+              placeholder="https://open.spotify.com/… or https://youtu.be/…"
+              [(ngModel)]="form.musicUrl"
+              (ngModelChange)="onMusicChange($event)" />
+          </div>
+          <span class="cs-field__error" *ngIf="musicError">{{ musicError }}</span>
+        </label>
+      </div>
+
+      <div class="cs-nav">
+        <button class="cs-btn cs-btn--back" (click)="prev()">← Back</button>
+        <button class="cs-btn cs-btn--next" [disabled]="!!musicError" (click)="next()">
+          Review <span>→</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="cs-card cs-card--review" [class.cs-card--active]="currentStep === 7" *ngIf="currentStep === 7">
+      <div class="cs-card__num">07</div>
+      <h2 class="cs-card__title">Review</h2>
+      <p class="cs-card__hint">Everything look good?</p>
+
+      <div class="cs-review">
+        <dl class="cs-review__grid">
+          <dt>Type</dt>
+          <dd>
+            <span class="cs-badge cs-badge--type">
+              {{ form.type === 'yoga' ? '🧘 Yoga' : '💪 Pilates' }}
+            </span>
+          </dd>
+
+          <dt>Goal</dt>
+          <dd><span class="cs-badge">{{ form.goal | titlecase }}</span></dd>
+
+          <dt>Style</dt>
+          <dd>{{ subcategoryLabel }}</dd>
+
+          <dt>Name</dt>
+          <dd>{{ form.name }}</dd>
+
+          <dt>Duration</dt>
+          <dd>{{ form.durationMinutes }} min</dd>
+
+          <dt>Exercises</dt>
+          <dd>{{ filledExercises }} /{{ exerciseSlots.length }}</dd>
+
+          <dt *ngIf="form.musicUrl">Music</dt>
+          <dd *ngIf="form.musicUrl" class="cs-review__url">{{ form.musicUrl }}</dd>
+        </dl>
+
+      
+        <div class="cs-review__exercises">
+          <span *ngFor="let slot of exerciseSlots; let i = index"
+                class="cs-review__ex"
+                [class.cs-review__ex--empty]="!slot.name">
+            <span class="cs-review__ex-num">{{ i + 1 }}</span>
+            {{ slot.name || '—' }}
+          </span>
+        </div>
+      </div>
+
+      <!-- Validation errors -->
+      <ul class="cs-errors" *ngIf="validationErrors.length">
+        <li *ngFor="let e of validationErrors">{{ e }}</li>
+      </ul>
+
+      <div class="cs-nav">
+        <button class="cs-btn cs-btn--back" (click)="prev()">← Back</button>
+        <button
+          class="cs-btn cs-btn--save"
+          [class.cs-btn--loading]="saving"
+          [disabled]="saving"
+          (click)="save()">
+          <span *ngIf="!saving">Save Session ✦</span>
+          <span *ngIf="saving" class="cs-spinner"></span>
+        </button>
+      </div>
+    </div>
+
+   
+    <div class="cs-success" *ngIf="saved">
+      <div class="cs-success__icon">✦</div>
+      <h2>Session Saved!</h2>
+      <p>Your <strong>{{ form.name }}</strong> session is ready.</p>
+      <button class="cs-btn cs-btn--next" (click)="resetForm()">Create Another</button>
+    </div>
+
   </div>
-
-  <form class="form create-form">
-
-    <!-- STEP 1 -->
-    <div class="card step-card">
-      <h3>1. Choose Session Type</h3>
-
-      <div class="option-group">
-        <button type="button" class="option">🧘 Yoga</button>
-        <button type="button" class="option">💪 Pilates</button>
-      </div>
-    </div>
-
-    <!-- STEP 2 -->
-    <div class="card step-card">
-      <h3>2. Select Goal</h3>
-
-      <div class="option-group">
-        <button type="button" class="option">Strength</button>
-        <button type="button" class="option">Flexibility</button>
-        <button type="button" class="option">Recovery</button>
-      </div>
-    </div>
-
-    <!-- STEP 3 -->
-    <div class="card step-card">
-      <h3>3. Choose Subcategory</h3>
-
-      <div class="option-group">
-        <button type="button" class="option">Vinyasa</button>
-        <button type="button" class="option">Core Pilates</button>
-      </div>
-    </div>
-
- <!-- STEP 4 -->
-<div class="card step-card">
-  <h3>4. Session Details</h3>
-
-  <!-- NEW: session name -->
-  <input type="text" placeholder="Session Name" />
-
-  <input type="text" placeholder="Short Description" />
-
-  <textarea placeholder="Detailed Description"></textarea>
-
-  <input type="number" placeholder="Duration (minutes)" />
-</div>
-
-    <!-- STEP 5 -->
-    <div class="card step-card">
-      <h3>5. Exercises</h3>
-
-      <div class="exercise-list">
-        <input type="text" placeholder="Exercise name" />
-        <input type="text" placeholder="Exercise name" />
-      </div>
-    </div>
-
-    <!-- STEP 6 -->
-    <div class="card step-card">
-      <h3>6. Music</h3>
-
-      <input type="text" placeholder="Music URL (Spotify, YouTube...)" />
-    </div>
-
-    <!-- SUBMIT -->
-    <div class="card">
-      <button class="btn full-btn">Save Session</button>
-    </div>
-
-  </form>
 </section>
+  
