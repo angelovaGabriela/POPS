@@ -71,25 +71,30 @@
 
         <input type="password" placeholder="Confirm Password" formControlName="rePassword" appInputError />
 
+        <!-- PASSWORD MATCH ERROR (FORM LEVEL) -->
+        @if (passwordsGroup.touched && passwordsGroup.errors?.['passwordMismatch']) {
+        <p class="error">Passwords do not match!</p>
+        }
       </ng-container>
 
-      <!-- PASSWORD MATCH ERROR (FORM LEVEL) -->
-      @if (passwordsGroup.touched && passwordsGroup.errors?.['passwordMismatch']) {
-      <p class="error">Passwords do not match!</p>
+
+      @if (registerForm.invalid && registerForm.touched) {
+      <p class="error">You can't continue until you provide valid data</p>
       }
 
-      <!-- API ERROR -->
+      
       @if (errorMessage) {
       <p class="error">{{ errorMessage }}</p>
       }
 
-    <button class="btn full-btn" type="submit" [disabled]="isLoading || registerForm.invalid" [class.no-hover]="registerForm.invalid || isLoading">
-  @if (isLoading) {
-    Registering...
-  } @else {
-    Register
-  }
-</button>
+      <button class="btn full-btn" type="submit" [disabled]="isLoading || registerForm.invalid"
+        [class.no-hover]="registerForm.invalid || isLoading">
+        @if (isLoading) {
+        Registering...
+        } @else {
+        Register
+        }
+      </button>
 
     </form>
   </div>
