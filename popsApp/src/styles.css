@@ -41,8 +41,8 @@ body {
   cursor: pointer;
 }
 
-button:disabled:hover {
-  background: inherit;
+.btn:disabled {
+  pointer-events: none;
 }
 
 .hero-card h1 {
@@ -261,6 +261,11 @@ input:focus {
 .full-btn {
   width: 100%;
   margin-top: 1rem;
+}
+
+.input-error {
+  border: 1px solid red;
+  outline-color: red; /* keeps the focus ring red too */
 }
 
 .error {
