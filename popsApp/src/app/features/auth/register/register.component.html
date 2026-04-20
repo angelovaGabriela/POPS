@@ -3,21 +3,93 @@
     <h2>Create your account</h2>
     <p class="subtitle">Join and build your flow</p>
 
-    <form class="register-form">
+    <form class="register-form" [formGroup]="registerForm" (ngSubmit)="onRegister()">
 
-      <input type="text" placeholder="First Name" />
+      <!-- FIRST NAME -->
+      <input type="text" placeholder="First Name" formControlName="firstName" appInputError />
 
-      <input type="text" placeholder="Last Name" />
+      @if (registerForm.get('firstName')?.touched && registerForm.get('firstName')?.invalid) {
+      @if (registerForm.get('firstName')?.errors?.['required']) {
+      <p class="error">First name is required!</p>
+      }
+      }
 
-      <input type="email" placeholder="Email" />
+      <!-- LAST NAME -->
+      <input type="text" placeholder="Last Name" formControlName="lastName" />
 
-      <input type="number" placeholder="Age" />
+      <!-- EMAIL -->
+      <input type="email" placeholder="Email" formControlName="email" appInputError />
 
-      <input type="password" placeholder="Password" />
+      @if (registerForm.get('email')?.touched && registerForm.get('email')?.invalid) {
+      @if (registerForm.get('email')?.errors?.['required']) {
+      <p class="error">Email is required!</p>
+      }
+      @else if (registerForm.get('email')?.errors?.['email']) {
+      <p class="error">Invalid email format!</p>
+      }
+      @else if (registerForm.get('email')?.errors?.['disposableEmail']) {
+      <p class="error">Disposable emails are not allowed!</p>
+      }
+      }
 
-      <input type="password" placeholder="Repeat Password" />
+      <!-- AGE -->
+      <input type="number" placeholder="Age" formControlName="age" appInputError />
 
-      <button class="btn full-btn">Register</button>
+      @if (registerForm.get('age')?.touched && registerForm.get('age')?.invalid) {
+      @if (registerForm.get('age')?.errors?.['required']) {
+      <p class="error">Age is required!</p>
+      }
+      @else if (registerForm.get('age')?.errors?.['min']) {
+      <p class="error">You must be at least 15 years old!</p>
+      }
+      @else if (registerForm.get('age')?.errors?.['max']) {
+      <p class="error">Invalid age value!</p>
+      }
+      }
+
+      <!-- PASSWORDS GROUP -->
+      <ng-container formGroupName="passwords">
+
+        <input type="password" placeholder="Password" formControlName="password" appInputError />
+
+        @if (registerForm.get('passwords.password')?.touched &&
+        registerForm.get('passwords.password')?.invalid) {
+
+        @if (registerForm.get('passwords.password')?.errors?.['required']) {
+        <p class="error">Password is required!</p>
+        }
+        @else if (registerForm.get('passwords.password')?.errors?.['strongPassword']; as pwdErrors) {
+        <ul class="error">
+          @if (!pwdErrors.hasMinLength) { <li>At least 8 characters</li> }
+          @if (!pwdErrors.hasUpperCase) { <li>One uppercase letter</li> }
+          @if (!pwdErrors.hasLowerCase) { <li>One lowercase letter</li> }
+          @if (!pwdErrors.hasNumber) { <li>One number</li> }
+          @if (!pwdErrors.hasSpecialChar){ <li>One special character (!@#$...)</li> }
+        </ul>
+        }
+        }
+
+        <input type="password" placeholder="Confirm Password" formControlName="rePassword" appInputError />
+
+      </ng-container>
+
+      <!-- PASSWORD MATCH ERROR (FORM LEVEL) -->
+      @if (passwordsGroup.touched && passwordsGroup.errors?.['passwordMismatch']) {
+      <p class="error">Passwords do not match!</p>
+      }
+
+      <!-- API ERROR -->
+      @if (errorMessage) {
+      <p class="error">{{ errorMessage }}</p>
+      }
+
+      <button class="btn full-btn" type="submit" [disabled]="isLoading">
+        @if (isLoading) {
+        Registering...
+        } @else {
+        Register
+        }
+      </button>
 
     </form>
   </div>

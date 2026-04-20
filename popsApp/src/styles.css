@@ -41,6 +41,10 @@ body {
   cursor: pointer;
 }
 
+button:disabled:hover {
+  background: inherit;
+}
+
 .hero-card h1 {
   font-size: 2rem;
   margin-bottom: 1rem;
@@ -257,4 +261,16 @@ input:focus {
 .full-btn {
   width: 100%;
   margin-top: 1rem;
+}
+
+.error {
+  color: #e74c3c;
+  font-size: 0.85rem;
+  margin-top: 4px;
+  margin-bottom: 10px;
+  line-height: 1.2;
+  display: block;
+  font-weight: 500;
+
+ 
 }
