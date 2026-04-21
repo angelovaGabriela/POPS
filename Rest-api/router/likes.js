@@ -5,6 +5,6 @@ const { sessionController } = require('../controllers');
 
 // middleware that is specific to this router
 
-router.put('/:sessionId', auth(), sessionController.like);
+// router.put('/:sessionId', auth(), sessionController.like);
 
 module.exports = router
