@@ -1,24 +1,21 @@
-<section class="container session-details">
+<section class="container session-details" *ngIf="session; else loading">
 
   <!-- HERO -->
   <div class="card hero-card">
-    <h2>Morning Flow</h2>
-    <p class="subtitle">Start your day energized and focused</p>
+    <h2>{{ session.name }}</h2>
+    <p class="subtitle">{{ session.description}}</p>
 
     <div class="meta">
-      <span>🧘 Yoga</span>
-      <span>💪 Strength</span>
-      <span>⏱ 30 min</span>
-      <span>👤 by Maria</span>
+      <span>🧘 {{ session.type}}</span>
+      <span>💪 {{ session.goal }}</span>
+      <span>⏱ {{ session.durationMinutes }} min</span>
     </div>
   </div>
 
   <!-- DESCRIPTION -->
   <div class="card">
     <h3>Description</h3>
-    <p>
-      This session focuses on improving flexibility and activating the body with a smooth flow.
-    </p>
+    <p>{{ session.detailedDescription }}</p>
   </div>
 
   <!-- STRUCTURE -->
@@ -28,22 +25,22 @@
     <div class="grid info-grid">
       <div class="info-card">
         <h4>Type</h4>
-        <p>Yoga</p>
+        <p>{{ session.type }}</p>
       </div>
 
       <div class="info-card">
         <h4>Goal</h4>
-        <p>Flexibility</p>
+        <p>{{ session.goal }}</p>
       </div>
 
       <div class="info-card">
         <h4>Subcategory</h4>
-        <p>Vinyasa</p>
+        <p>{{ session.subcategory }}</p>
       </div>
 
       <div class="info-card">
         <h4>Duration</h4>
-        <p>30 minutes</p>
+        <p>{{ session.durationMinutes }} minutes</p>
       </div>
     </div>
   </div>
@@ -53,17 +50,23 @@
     <h3>Exercises</h3>
 
     <div class="grid exercises-grid">
-      <app-exercise-item></app-exercise-item>
-
-      <app-exercise-item></app-exercise-item>
+      <app-exercise-item
+        *ngFor="let exercise of session.exercises"
+        [exercise]="exercise">
+      </app-exercise-item>
     </div>
   </div>
 
   <!-- MUSIC -->
-  <div class="card">
-    <h3>Music</h3>
-    <p class="music-link">🎵 Spotify Playlist</p>
-  </div>
+<div class="card">
+  <h3>Music</h3>
+  <a *ngIf="session.musicUrl; else noMusic" class="music-link" [href]="session.musicUrl" target="_blank">
+    🎵 Check it out
+  </a>
+  <ng-template #noMusic>
+    <p>No music added for this session.</p>
+  </ng-template>
+</div>
 
   <!-- ACTION -->
   <div class="card action-card">
@@ -71,3 +74,7 @@
   </div>
 
 </section>
+
+<ng-template #loading>
+  <p>Loading session...</p>
+</ng-template>

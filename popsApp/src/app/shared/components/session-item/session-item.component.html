@@ -1,5 +1,5 @@
 <div class="session-card">
-  <h4>Morning Flow</h4>
-  <p>Start your day energized and focused.</p>
-  <button class="btn" routerLink="session-details">Details</button>
+  <h4>{{ session.name }} 🌿</h4>
+  <p> {{ session.description }}</p>
+  <button class="btn" [routerLink]="['/session-details', session._id]"> Details</button>
 </div>

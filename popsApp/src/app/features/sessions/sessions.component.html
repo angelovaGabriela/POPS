@@ -13,15 +13,17 @@
     </div>
   </div>
 
-  <!-- RECOMMENDED -->
+  <!-- ALL SESSIONS -->
   <div class="card" appLiquidCard>
-    <h3>Recommended for you</h3>
+    <h3>All sessions</h3>
 
     <div class="grid sessions-grid">
-      <app-session-item></app-session-item>
-      <app-session-item></app-session-item>
+      <app-session-item
+        *ngFor="let session of sessions"
+        [session]="session">
+      </app-session-item>
     </div>
-  </div>
+  </div>  <!-- ← was missing -->
 
   <!-- BROWSE BY GOAL -->
   <div class="card" appLiquidCard>
@@ -46,6 +48,6 @@
         <button class="btn" routerLink="/dashboard">View</button>
       </div>
     </div>
-  </div>
+  </div>  <!-- ← was missing -->
 
 </section>

@@ -14,7 +14,6 @@
   display: block;
 }
 
-/* ── Root ─────────────────────────────────────────────── */
 .cs-root {
   position: relative;
   min-height: 100vh;
@@ -25,7 +24,7 @@
   padding: 0 0 80px;
 }
 
-/* ── Ambient orbs ─────────────────────────────────────── */
+
 .cs-orb {
   position: fixed;
   border-radius: 50%;
@@ -61,7 +60,7 @@
   50%      { opacity: 1; }
 }
 
-/* ── Inner ────────────────────────────────────────────── */
+
 .cs-inner {
   position: relative;
   z-index: 1;
@@ -70,7 +69,6 @@
   padding: 60px 24px 0;
 }
 
-/* ── Header ───────────────────────────────────────────── */
 .cs-header { margin-bottom: 40px; }
 .cs-label {
   display: inline-block;
@@ -98,7 +96,7 @@
   margin: 0;
 }
 
-/* ── Progress ─────────────────────────────────────────── */
+
 .cs-progress {
   display: flex;
   align-items: center;
@@ -118,13 +116,15 @@
   border-radius: 4px;
   transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .cs-progress__text {
   font-size: 12px;
   color: var(--cs-muted);
   white-space: nowrap;
 }
 
-/* ── Card ─────────────────────────────────────────────── */
+
+
 .cs-card {
   background: var(--cs-surface);
   border: 1px solid var(--cs-border);
@@ -171,7 +171,7 @@
   margin: 0 0 28px;
 }
 
-/* ── Toggle (session type) ────────────────────────────── */
+
 .cs-toggle {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -207,7 +207,7 @@
   letter-spacing: -0.01em;
 }
 
-/* ── Pill group ───────────────────────────────────────── */
+
 .cs-pill-group {
   display: flex;
   flex-direction: column;
@@ -247,7 +247,7 @@
   color: var(--cs-muted);
 }
 
-/* Sub pills */
+
 .cs-pill-group--sub { flex-direction: row; flex-wrap: wrap; }
 .cs-pill--sub {
   flex-direction: row;
@@ -258,7 +258,7 @@
   font-weight: 600;
 }
 
-/* ── Fields ───────────────────────────────────────────── */
+
 .cs-fields { display: flex; flex-direction: column; gap: 18px; margin-bottom: 32px; }
 .cs-field { display: flex; flex-direction: column; gap: 8px; }
 .cs-field__label {
@@ -274,7 +274,7 @@
 .cs-field__label em { color: var(--cs-accent); font-style: normal; }
 .cs-field__meta {
   font-size: 11px;
-  color: #A68053;           /* amber for meta info */
+  color: #A68053;          
   font-weight: 500;
   letter-spacing: 0;
   text-transform: none;
@@ -300,17 +300,17 @@
 .cs-field__textarea { resize: vertical; min-height: 90px; }
 .cs-field__error { font-size: 12px; color: var(--cs-error); margin-top: 2px; }
 
-/* Duration row */
+
 .cs-duration-row { display: flex; align-items: center; gap: 10px; }
 .cs-field__duration { max-width: 120px; }
 .cs-duration-unit { font-size: 14px; color: var(--cs-muted); }
 
-/* Music */
+
 .cs-music-row { display: flex; align-items: center; gap: 10px; }
 .cs-music-icon { font-size: 1.4rem; flex-shrink: 0; }
 .cs-music-input { flex: 1; }
 
-/* ── Exercises ────────────────────────────────────────── */
+
 .cs-exercises {
   display: flex;
   flex-direction: column;
@@ -396,7 +396,7 @@
 }
 .cs-exercise-row__clear:hover { color: var(--cs-error); }
 
-/* ── Review ───────────────────────────────────────────── */
+
 .cs-review { margin-bottom: 28px; }
 .cs-review__grid {
   display: grid;
@@ -419,7 +419,7 @@
 }
 .cs-review__url {
   font-size: 12px !important;
-  color: #A68053 !important;     /* amber for links */
+  color: #A68053 !important;     
   word-break: break-all;
 }
 .cs-badge {
@@ -458,7 +458,6 @@
   color: #9DA658;
 }
 
-/* ── Errors ───────────────────────────────────────────── */
 .cs-errors {
   list-style: none;
   padding: 14px 18px;
@@ -476,7 +475,7 @@
 }
 .cs-errors li::before { content: '✕  '; }
 
-/* ── Navigation ───────────────────────────────────────── */
+
 .cs-nav {
   display: flex;
   align-items: center;
@@ -484,7 +483,7 @@
   justify-content: flex-end;
 }
 
-/* ── Buttons ──────────────────────────────────────────── */
+
 .cs-btn {
   padding: 13px 24px;
   border-radius: 10px;
@@ -539,7 +538,7 @@
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* ── Success ──────────────────────────────────────────── */
+
 .cs-success {
   text-align: center;
   padding: 60px 24px;
@@ -565,7 +564,9 @@
   margin: 0 0 32px;
 }
 
-/* ── Responsive ───────────────────────────────────────── */
+
+
+
 @media (max-width: 500px) {
   .cs-inner { padding: 40px 16px 0; }
   .cs-card { padding: 24px 20px; }

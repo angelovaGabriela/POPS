@@ -31,7 +31,7 @@ export const routes: Routes = [
 
   { path: "sessions-home", component: SessionsComponent }, 
   { path: "create-session", component: SessionCreateComponent, canActivate: [authGuard]}, 
-  { path: "session-details", component: SessionDetailsComponent },
+  { path: "session-details/:id", component: SessionDetailsComponent },
   //to change details to :id after...done with dev purposses 
   // { path: "edit-session", component: SessionCreateComponent, canActivate: [authGuard]}, 
 

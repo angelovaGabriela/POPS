@@ -15,7 +15,6 @@ export class ApiService {
 
   getSessionById(sessionId: string): Observable<Session> {
   return this.http.get<Session>(`${this.apiUrl}/sessions/${sessionId}`, {
-    withCredentials: true,
   });
 }
 createSession(data: SessionData): Observable<Session> {
@@ -27,7 +26,6 @@ createSession(data: SessionData): Observable<Session> {
 
 getSessions(): Observable<Session[]> {
   return this.http.get<Session[]>(`${this.apiUrl}/sessions`, {
-    withCredentials: true,
   });
 }
 

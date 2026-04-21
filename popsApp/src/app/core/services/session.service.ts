@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, tap, of } from 'rxjs';
 import {
   Session, SessionData,
   SessionType,
@@ -63,10 +63,28 @@ export class SessionService {
     );
   }
 
-  getSessionById(id: string): Session | undefined {
-    return this._sessions$.getValue().find(s => s.id === id);
+getSessionById(id: string): Observable<Session> {
+  
+  const cached = this._sessions$.getValue().find(s => s._id === id);
+  
+  if (cached) {
+    return of(cached);
   }
 
+  return this.api.getSessionById(id).pipe(
+    tap(session => {
+      console.log('api returned:', session); 
+
+      const current = this._sessions$.getValue();
+
+
+      // ← fix: use _id instead of id
+      if (!current.find(s => s._id === id)) {
+        this._sessions$.next([...current, session]);
+      }
+    })
+  );
+}
 
   getSubcategories(
     type: SessionType,
@@ -136,14 +154,14 @@ export class SessionService {
 
   
 
-  // private loadFromStorage(): Session[] {
-  //   try {
-  //     const raw = localStorage.getItem(this.sessionsKey);
-  //     return raw ? JSON.parse(raw) : [];
-  //   } catch {
-  //     return [];
-  //   }
-  // }
+  private loadFromStorage(): Session[] {
+    try {
+      const raw = localStorage.getItem(this.sessionsKey);
+      return raw ? JSON.parse(raw) : [];
+    } catch {
+      return [];
+    }
+  }
 
   private persistToStorage(sessions: Session[]): void {
     try {

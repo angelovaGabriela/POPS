@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RouterLink} from '@angular/router';
+import { Session } from '../../interfaces/session';
 
 @Component({
   selector: 'app-session-item',
@@ -7,4 +8,7 @@ import { RouterLink} from '@angular/router';
   templateUrl: './session-item.component.html',
   styleUrl: './session-item.component.css',
 })
-export class SessionItemComponent {}
+export class SessionItemComponent {
+  @Input() session!: Session;  
+
+}
