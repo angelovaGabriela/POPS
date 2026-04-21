@@ -1,23 +1,56 @@
 const mongoose = require('mongoose');
-const { ObjectId } = mongoose.Schema.Types;
 
-const sessionSchema = new mongoose.Schema({
-    text: {
-        type: String,
-        required: true
+const sessionSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
     },
-    likes: [{
-        type: ObjectId,
-        ref: "User"
-    }],
+    description: {
+      type: String,
+      required: true,
+    },
+    detailedDescription: {
+      type: String,
+    },
+    type: {
+      type: String,
+      enum: ['yoga', 'pilates'],
+      required: true,
+    },
+    goal: {
+      type: String,
+      required: true,
+    },
+    subcategory: {
+      type: String,
+      required: true,
+    },
+
+    durationMinutes: {
+      type: Number,
+      required: true,
+      min: 1,
+    },
+
+    exercises: [
+      {
+        name: { type: String, required: true },
+        duration: { type: Number }, // optional
+      },
+    ],
+
+    musicUrl: {
+      type: String,
+    },
+
     userId: {
-        type: ObjectId,
-        ref: "User"
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
     },
-    categoryId: {
-        type: ObjectId,
-        ref: "Category"
-    },
-}, { timestamps: { createdAt: 'created_at' } });
+  },
+  { timestamps: true }
+);
 
 module.exports = mongoose.model('Session', sessionSchema);

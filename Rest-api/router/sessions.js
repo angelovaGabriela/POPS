@@ -3,8 +3,19 @@ const router = express.Router();
 const { auth } = require('../utils');
 const { sessionController } = require('../controllers');
 
-// middleware that is specific to this router
+// CREATE session
+router.post('/', auth(), sessionController.createSession);
 
-router.get('/', sessionController.getLatestsSessions);
+// GET all sessions
+router.get('/', sessionController.getSessions);
 
-module.exports = router
+// GET one session
+router.get('/:id', sessionController.getSessionById);
+
+// UPDATE session
+router.put('/:sessionId', auth(), sessionController.updateSession);
+
+// DELETE session
+router.delete('/:sessionId', auth(), sessionController.deleteSession);
+
+module.exports = router;

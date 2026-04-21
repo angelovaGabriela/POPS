@@ -10,9 +10,9 @@ router.post('/', auth(), categoryController.createCategory);
 
 router.get('/:categoryId', categoryController.getCategory);
 router.post('/:categoryId', auth(), sessionController.createSession);
-router.put('/:categoryId', auth(), categoryController.subscribe);
-router.put('/:categoryId/sessions/:sessionId', auth(), sessionController.editSession);
-router.delete('/:categoryId/sessions/:sessionId', auth(), sessionController.deleteSession);
+// router.put('/:categoryId', auth(), categoryController.subscribe);
+// router.put('/:categoryId/sessions/:sessionId', auth(), sessionController.editSession);
+// router.delete('/:categoryId/sessions/:sessionId', auth(), sessionController.deleteSession);
 
 // router.get('/my-trips/:id/reservations', auth(), categoryController.getReservations);
 
