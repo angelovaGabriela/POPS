@@ -4,7 +4,7 @@ import { CategoryItemComponent } from '../../../shared/components/category-item/
 
 @Component({
   selector: 'app-category-list',
-  imports: [RouterLink, RouterLinkActive, CategoryItemComponent],
+  imports: [ CategoryItemComponent],
   templateUrl: './category-list.component.html',
   styleUrl: './category-list.component.css',
 })

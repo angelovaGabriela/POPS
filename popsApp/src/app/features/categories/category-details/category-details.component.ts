@@ -4,7 +4,7 @@ import { ExerciseItemComponent } from '../../../shared/components/exercise-item/
 
 @Component({
   selector: 'app-category-details',
-  imports: [RouterLink, RouterLinkActive, ExerciseItemComponent],
+  imports: [RouterLink, ExerciseItemComponent],
   templateUrl: './category-details.component.html',
   styleUrl: './category-details.component.css',
 })
