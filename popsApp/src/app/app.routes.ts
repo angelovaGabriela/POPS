@@ -10,16 +10,19 @@ import { SessionDetailsComponent } from './features/sessions/session-details/ses
 import { SessionCreateComponent } from './features/sessions/session-create/session-create.component';
 import { DashboardComponent } from './features/dashboard/dashboard.component';
 import { NotFoundComponent } from './features/not-found/not-found.component';
-import { CategoryItemComponent } from './shared/components/category-item/category-item.component';
+import { authGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
+
+  //canActivate: [authGuard]
+
   { path: "", redirectTo: 'home', pathMatch: 'full' },
    
   { path: "home", component: HomeComponent },
 
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },
-  { path: "dashboard", component: DashboardComponent },
+  { path: "dashboard", component: DashboardComponent, canActivate: [authGuard] },
 
   { path: "categories-home", component: CategoriesComponent }, 
   { path: "categories", component: CategoryListComponent }, 
@@ -27,10 +30,10 @@ export const routes: Routes = [
 //to change details to :id after...done with dev purposses
 
   { path: "sessions-home", component: SessionsComponent }, 
-  { path: "create-session", component: SessionCreateComponent }, 
+  { path: "create-session", component: SessionCreateComponent, canActivate: [authGuard]}, 
   { path: "session-details", component: SessionDetailsComponent },
   //to change details to :id after...done with dev purposses 
-  { path: "edit-session", component: SessionCreateComponent }, 
+  // { path: "edit-session", component: SessionCreateComponent, canActivate: [authGuard]}, 
 
   { path: "**", component: NotFoundComponent },
 
